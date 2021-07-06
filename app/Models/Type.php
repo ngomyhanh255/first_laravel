@@ -9,8 +9,16 @@ class Type extends Model
 {
     use HasFactory;
 
+    public $table = "type";
     protected $fillable = [
         'name',
     ];
 
+    public function product()
+        {
+            return $this->hasOne(Product::class);
+        }
+
 }
+
+

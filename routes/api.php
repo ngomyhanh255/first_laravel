@@ -5,6 +5,8 @@ use Illuminate\Support\Facades\Route;
 use GuzzleHttp\Client;
 
 use App\Http\Controllers\ProductController;
+use App\Http\Controllers\TypeController;
+
 
 
 
@@ -22,9 +24,15 @@ use App\Http\Controllers\ProductController;
 Route::middleware('auth:api')->get('/user', function (Request $request) {
     return $request->user();
 });
- 
-
 Route::prefix('/product')->group(function () {
-    Route::post('/', [ProductController::class, 'create']);
-    Route::get('/', [ProductController::class, 'list']);
+    Route::post('/create', [ProductController::class, 'create']);
+    Route::post('/update', [ProductController::class, 'update']);
+    Route::post('/delete', [ProductController::class, 'delete']);
+    Route::post('/detail', [ProductController::class, 'find']);
+    
+    Route::post('/list', [ProductController::class, 'list']);
+    Route::post('/search', [ProductController::class, 'search']);
+});
+Route::prefix('/type')->group(function () {
+    Route::post('/detail', [TypeController::class, 'find']);
 });

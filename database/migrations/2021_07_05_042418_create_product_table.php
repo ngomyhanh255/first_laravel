@@ -13,8 +13,10 @@ class CreateProductTable extends Migration
      */
     public function up()
     {
+        Schema::dropIfExists('product');
         Schema::create('product', function (Blueprint $table) {
             $table->id();
+            $table->string('code')->unique();
             $table->string('name');
             $table->bigInteger('price');
             $table->unsignedBigInteger('type_id');
