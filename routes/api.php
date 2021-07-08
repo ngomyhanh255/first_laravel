@@ -6,6 +6,8 @@ use GuzzleHttp\Client;
 
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\TypeController;
+use App\Http\Controllers\ImageController;
+
 
 
 
@@ -35,4 +37,7 @@ Route::prefix('/product')->group(function () {
 });
 Route::prefix('/type')->group(function () {
     Route::post('/detail', [TypeController::class, 'find']);
+});
+Route::prefix('/image')->group(function () {
+    Route::post('/upload', [ImageController::class, 'upload']);
 });

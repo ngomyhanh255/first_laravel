@@ -37,10 +37,13 @@ class ProductController extends Controller
         
         $products= $products->get();
         $products = $products->map(function ($product) {
-            $type=$product->Type()->get()->toArray();
-            $sub_type=$product->SubType()->get()->toArray();
-            $product->type_name=$type[0]['name'];
-            $product->sub_type_name=$sub_type[0]['name'];
+            $type       = $product->Type()->get()->toArray();
+            $sub_type   = $product->SubType()->get()->toArray();
+            $image      = $product->Image()->get()->toArray();
+
+            $product->type_name     =$type[0]['name'];
+            $product->sub_type_name =$sub_type[0]['name'];
+            $product->image_path    =$image[0]['path'];
             return $product;
         });
          return $products;

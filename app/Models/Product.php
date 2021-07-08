@@ -29,6 +29,10 @@ class Product extends Model
     {
         return $this->belongsTo(SubType::class);
     }
+    public function Image()
+    {
+        return $this->belongsTo(Image::class);
+    }
     
     public static function boot()
     {

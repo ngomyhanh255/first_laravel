@@ -9,9 +9,16 @@ class Image extends Model
 {
     use HasFactory;
 
+    public $table = "image";
     protected $fillable = [
-        'file',
-        'file_type',
-        'file_size',
+        'name',
+        'type',
+        'size',
+        'path',
     ];
+
+    public function product()
+        {
+            return $this->hasOne(Product::class);
+        }
 }

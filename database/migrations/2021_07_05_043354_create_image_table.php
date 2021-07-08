@@ -15,9 +15,10 @@ class CreateImageTable extends Migration
     {
         Schema::create('image', function (Blueprint $table) {
             $table->id();
-            $table->string('file')->nullable();
-            $table->string('file_type')->nullable();
-            $table->string('file_size')->nullable();
+            $table->string('name')->nullable();
+            $table->string('type')->nullable();
+            $table->bigInteger('size')->nullable();
+            $table->string('path')->nullable();
             $table->timestamps();
         });
     }
